@@ -1,0 +1,27 @@
+.inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inicio .button {
+  
+  height: 50px;
+  margin: 2%;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+}
+
+.inicio button {
+  height: 50px;
+  width: 115px;
+  border: none;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+}
+
+.inicio button:hover {
+  background-color: #f2eaea;
+}
+

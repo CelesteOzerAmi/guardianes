@@ -1,0 +1,28 @@
+.listado-areas {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+}
+
+.listado-areas h1 {
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    font-weight: 200;
+    font-size: 40px;
+}
+
+.listado-areas p {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 2% 0%;
+    text-align: justify;
+    justify-self: center;
+    width: 80%;
+
+}
+
+
+.listado-areas section {
+    margin: 4% 5%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+}
