@@ -4,7 +4,7 @@ import Species from '../Species/Species';
 
 const ListSpecies = () => {
 
-    const listSpecies = database.dbEspecies;
+    const listSpecies = database.dbSpecies;
 
     return (
         <div className='list-species'>
