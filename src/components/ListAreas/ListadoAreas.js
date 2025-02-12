@@ -1,7 +1,7 @@
 import './ListadoAreas.css';
 import React from 'react';
-import Area from './Area';
-import database from '../database/database';
+import Area from '../Area/Area';
+import database from '../../database/database';
 
 
 const ListadoAreas = () => {

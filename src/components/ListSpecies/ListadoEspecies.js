@@ -1,6 +1,6 @@
 import './ListadoEspecies.css';
-import database from '../database/database';
-import Especie from './Especie';
+import database from '../../database/database';
+import Especie from '../Species/Especie';
 
 const ListadoEspecies = () => {
 

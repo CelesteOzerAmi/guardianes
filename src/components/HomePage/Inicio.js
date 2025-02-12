@@ -1,9 +1,9 @@
 import './Inicio.css'
 import React from 'react';
 import { useState } from 'react';
-import NavBar from './NavBar';
-import ListadoAreas from './ListadoAreas';
-import ListadoEspecies from './ListadoEspecies';
+import NavBar from '../NavBar/NavBar';
+import ListadoAreas from '../ListAreas/ListadoAreas';
+import ListadoEspecies from '../ListSpecies/ListadoEspecies';
 
 const Inicio = () => {
 
