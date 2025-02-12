@@ -1,13 +1,13 @@
-import './ListadoEspecies.css';
+import './ListSpecies.css';
 import database from '../../database/database';
-import Especie from '../Species/Especie';
+import Species from '../Species/Species';
 
-const ListadoEspecies = () => {
+const ListSpecies = () => {
 
-    const listaEspecies = database.dbEspecies;
+    const listSpecies = database.dbEspecies;
 
     return (
-        <div className='listado-especies'>
+        <div className='list-species'>
             <h1>
                 Especies protegidas
             </h1>
@@ -16,8 +16,8 @@ const ListadoEspecies = () => {
             </p>
             <section>
                 {
-                    listaEspecies.map((tipoEspecie) => (
-                        <Especie tipoEspecie={tipoEspecie} key={tipoEspecie.id} />
+                    listSpecies.map((typeSpecies) => (
+                        <Species typeSpecies={typeSpecies} key={typeSpecies.id} />
                     ))
                 }
             </section>
@@ -25,4 +25,4 @@ const ListadoEspecies = () => {
     )
 }
 
-export default ListadoEspecies
+export default ListSpecies

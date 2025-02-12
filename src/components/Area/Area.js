@@ -2,18 +2,18 @@ import React from 'react';
 import './Area.css';
 
 
-const Area = ({tipoArea}) => {
+const Area = ({areaType}) => {
   return (
     <>
       <div className='area'>
         <h2>
-          {tipoArea.nombre}
+          {areaType.nombre}
         </h2>
         <p>
-          {"Esta área se encuentra usualmente en " + tipoArea.ubicacion}
+          {"Esta área se encuentra usualmente en " + areaType.ubicacion}
         </p>
         <p>
-          {"Los usuarios han puntuado esta área en " + tipoArea.puntuacion}
+          {"Los usuarios han puntuado esta área en " + areaType.puntuacion}
         </p>
       </div>
 

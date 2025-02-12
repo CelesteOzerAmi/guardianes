@@ -1,15 +1,15 @@
-import './ListadoAreas.css';
+import './ListAreas.css';
 import React from 'react';
 import Area from '../Area/Area';
 import database from '../../database/database';
 
 
-const ListadoAreas = () => {
+const ListAreas = () => {
 
-    const listaAreas = database.dbAreas;
+    const listAreas = database.dbAreas;
 
     return (
-        <div className='listado-areas'>
+        <div className='list-areas'>
             <h1>
                 Áreas protegidas
             </h1>
@@ -21,8 +21,8 @@ const ListadoAreas = () => {
             </p>
             <section>
                 {
-                    listaAreas.map((tipoArea) => (
-                        <Area tipoArea={tipoArea} key={tipoArea.id} />
+                    listAreas.map((areaType) => (
+                        <Area areaType={areaType} key={areaType.id} />
                     ))
                 }
             </section>
@@ -30,4 +30,4 @@ const ListadoAreas = () => {
     )
 }
 
-export default ListadoAreas
+export default ListAreas

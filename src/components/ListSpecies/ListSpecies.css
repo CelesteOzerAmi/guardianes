@@ -1,15 +1,15 @@
-.listado-especies {
+.list-species {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
 }
 
-.listado-especies h1 {
+.list-species h1 {
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
     font-weight: 200;
     font-size: 40px;
 }
 
-.listado-especies p {
+.list-species p {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 2% 0%;
@@ -19,7 +19,7 @@
 }
 
 
-.listado-especies section {
+.list-species section {
     margin: 4% 5%;
     display: grid;
     grid-template-columns: auto auto auto;
