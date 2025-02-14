@@ -36,20 +36,23 @@ const Login = () => {
         if (data.isValid) {
           // Si es válido, muestra el spinner y redirige después de 2 segundos
           setTimeout(() => {
-            navigate('/inicio');
+            navigate('/home');
           }, 2000);
         } else {
           setError('Correo o contraseña incorrectos');
           setLoading(false);
+          navigate('/home');
         }
       } else {
         setError('Error en el servidor');
         setLoading(false);
+        navigate('/home');
       }
     } catch (err) {
       console.error('Error:', err);
       setError('Error de conexión');
       setLoading(false);
+      navigate('/home');
     }
   };
 
