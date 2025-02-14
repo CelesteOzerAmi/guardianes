@@ -1,35 +1,35 @@
-import './Inicio.css'
+import './HomePage.css'
 import React from 'react';
 import { useState } from 'react';
 import NavBar from '../NavBar/NavBar';
-import ListadoAreas from '../ListAreas/ListadoAreas';
-import ListadoEspecies from '../ListSpecies/ListadoEspecies';
+import ListAreas from '../ListAreas/ListAreas';
+import ListSpecies from '../ListSpecies/ListSpecies';
 
-const Inicio = () => {
+const Home = () => {
 
 
-    const [toggleInicio, setToggleInicio] = useState(true);
+    const [toggleHome, setToggleHome] = useState(true);
 
     return (
         <>  
             <NavBar/>
-            <div className='inicio'>
+            <div className='home'>
                 <div className='button'>
-                    <button onClick={() => setToggleInicio(true)}>
+                    <button onClick={() => setToggleHome(true)}>
                         Áreas
                     </button>
-                    <button onClick={() => setToggleInicio(false)}>
+                    <button onClick={() => setToggleHome(false)}>
                         Especies
                     </button>
                 </div>
                 {
-                    toggleInicio ? (
+                    toggleHome ? (
                         <section>
-                            <ListadoAreas />
+                            <ListAreas />
                         </section>
                     ) : (
                         <section>
-                            <ListadoEspecies />
+                            <ListSpecies />
                         </section>
                     )
                 }
@@ -38,4 +38,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default Home

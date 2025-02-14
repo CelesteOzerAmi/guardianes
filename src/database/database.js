@@ -31,7 +31,7 @@ const dbAreas = [
     }
 ]
 
-const dbEspecies = [
+const dbSpecies = [
     {
         id: 1,
         nombre: "araña salvaje",
@@ -94,4 +94,4 @@ const dbEspecies = [
     }
 ]
 
-export default {dbAreas, dbEspecies}
+export default {dbAreas, dbSpecies}

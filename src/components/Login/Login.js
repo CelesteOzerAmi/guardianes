@@ -11,7 +11,7 @@ const Login = () => {
         <input type="email" placeholder="Correo electrónico" />
         <input type="password" placeholder="Contraseña" />
         <button type="submit">
-          <Link to="/inicio">Iniciar Sesión</Link>
+          <Link to="/home">Iniciar Sesión</Link>
         </button>
         <p>
           <Link to="/register">Registrar cuenta nueva</Link>

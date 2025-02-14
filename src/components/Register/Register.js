@@ -12,7 +12,7 @@ const Register = () => {
         <input type="email" placeholder="Correo electrónico" />
         <input type="password" placeholder="Contraseña" />
         <button type="submit">
-          <Link to="/inicio">Registrar cuenta nueva</Link>
+          <Link to="/home">Registrar cuenta nueva</Link>
         </button>
       </form>
       <p>
