@@ -1,3 +1,4 @@
+
 .area {
     width: 65%;
     height: 80%;
@@ -6,6 +7,16 @@
     border: 1px solid #ddd;
     border-radius: 15px;
     background-color: #f9f9f9;
+}
+
+.area a {
+    text-decoration: none;
+    color: black;
+}
+
+.area:hover {
+    transform:  scale(1.1);
+    transition: 0.3s;
 }
 
 .area h2 {

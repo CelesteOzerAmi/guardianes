@@ -1,30 +1,25 @@
 import './NavBar.css';
 import React from 'react';
-import {  Link  } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
 const NavBar = () => {
   return (
-      <div className='navbar'>
-        <nav>
-          <ul>
-            <li>
-              <Link to="../home">Inicio</Link>
-            </li>
-            <li>
-              <Link to="./">Nosotros</Link>
-            </li>
-            <li>
-              <Link to="./">Puntuaciones</Link>
-            </li>
-            <li>
-              <Link to="./">Registros</Link>
-            </li>
-            <li>
-              <Link to="/">Registrarme | Iniciar sesión</Link>
-            </li>
-          </ul>
-        </nav>        
-      </div>
+    <>
+      <Navbar className="bg-body-tertiary navbar">
+        <Container>
+          <Navbar.Brand href="/home">Guardianes del entorno</Navbar.Brand>
+          <Navbar.Text className='navbar-element'>Puntuación</Navbar.Text>
+          <Navbar.Text className='navbar-element'>Registro de áreas</Navbar.Text>
+          <Navbar.Text className='navbar-element'>Registro de especies</Navbar.Text>
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              Usuario: <a href="./">Lucas S.</a>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   )
 }
 
