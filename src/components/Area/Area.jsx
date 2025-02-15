@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Area.css';
 import AreaDetail from '../AreaDetail/AreaDetail';
 
 
 const Area = ({ areaType }) => {
-  const [areaClicked, setAreaClicked] = useState(false);
+
   const [showAreaDetail, setShowAreaDetail] = useState(false);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setAreaClicked(!areaClicked);
-    setShowAreaDetail(true);
-    //<AreaDetail areaTypeDetail={areaType} modalLoad={true}/>;
+  const handleClick = () => {
+    setShowAreaDetail(!showAreaDetail);
+    console.log(showAreaDetail)
   }
-
- 
 
   return (
     <>
@@ -29,7 +25,7 @@ const Area = ({ areaType }) => {
           {"Los usuarios han puntuado esta área en " + areaType.puntuacion}
         </p>
       </div>
-      {showAreaDetail ? <AreaDetail areaTypeDetail={areaType} modalLoad={true} /> : <div></div>}
+      {showAreaDetail ? <AreaDetail areaTypeDetail={areaType}/> : <></>}
     </>
   )
 }

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
-const AreaDetail = ({ areaTypeDetail, modalLoad }) => {
+const AreaDetail = (props) => {
 
-    const [modalShow, setModalShow] = useState(modalLoad);
+    const [modalShow, setModalShow] = useState(true);
+    let areaData = props.areaTypeDetail;
+    console.log(areaData)
 
-    function MyVerticallyCenteredModal(props) {
+    /*useEffect(()=>{
+        setModalShow(true);
+    },[areaData])*/
+
+    function AreaDetailModal(props) {
         return (
             <Modal
                 {...props}
@@ -17,7 +23,7 @@ const AreaDetail = ({ areaTypeDetail, modalLoad }) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {areaTypeDetail.nombre}
+                        {areaData.id}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -26,8 +32,8 @@ const AreaDetail = ({ areaTypeDetail, modalLoad }) => {
                         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
                         consectetur ac, vestibulum at eros.
                     </p>
-                    <p>{areaTypeDetail.ubicacion}</p>
-                    <p>{areaTypeDetail.puntuacion}</p>
+                    <p>{areaData.ubicacion}</p>
+                    <p>{areaData.puntuacion}</p>
 
                 </Modal.Body>
                 <Modal.Footer>
@@ -40,11 +46,10 @@ const AreaDetail = ({ areaTypeDetail, modalLoad }) => {
 
     return (
         <>
-            <MyVerticallyCenteredModal
+            <AreaDetailModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
-
         </>
     )
 }
