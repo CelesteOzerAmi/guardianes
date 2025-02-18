@@ -1,16 +1,15 @@
 import React from 'react';
-import './AreaDetail.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
-const AreaDetail = (props) => {
+
+const SpeciesDetail = (props) => {
 
     const [modalShow, setModalShow] = useState(true);
-    let areaData = props.areaTypeDetail;
+    let SpeciesData = props.SpeciesTypeDetail;
 
-
-    function AreaDetailModal(props) {
+    function SpeciesDetailModal(props) {
         return (
             <Modal
                 {...props}
@@ -18,9 +17,9 @@ const AreaDetail = (props) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton >
+                <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {areaData.id}
+                        {SpeciesData.id}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -29,8 +28,8 @@ const AreaDetail = (props) => {
                         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
                         consectetur ac, vestibulum at eros.
                     </p>
-                    <p>{areaData.ubicacion}</p>
-                    <p>{areaData.puntuacion}</p>
+                    <p>{SpeciesData.ubicacion}</p>
+                    <p>{SpeciesData.puntuacion}</p>
 
                 </Modal.Body>
                 <Modal.Footer>
@@ -43,12 +42,11 @@ const AreaDetail = (props) => {
 
     return (
         <>
-            <AreaDetailModal
+            <SpeciesDetailModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
-        </>
-    )
+        </>)
 }
 
-export default AreaDetail
+export default SpeciesDetail

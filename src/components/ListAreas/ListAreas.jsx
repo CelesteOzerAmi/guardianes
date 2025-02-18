@@ -2,11 +2,13 @@ import './ListAreas.css';
 import React from 'react';
 import Area from '../Area/Area';
 import database from '../../database/database';
+import AreaFilter from '../AreaFilter/AreaFilter';
 
 
 const ListAreas = () => {
 
     const listAreas = database.dbAreas;
+    
 
     return (
         <div className='list-areas'>
@@ -19,7 +21,8 @@ const ListAreas = () => {
                 Hasta ahora, las áreas que se encuentran protegidas en nuestro país
                 son las que se listan a continuación.
             </p>
-            <section>
+            <AreaFilter className='areafilter' />
+            <section> 
                 {
                     listAreas.map((areaType) => (
                         <Area areaType={areaType} key={areaType.id} />

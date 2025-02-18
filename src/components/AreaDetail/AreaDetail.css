@@ -1,4 +1,17 @@
-.area-detail {
-    display: flex;
-    flex-direction: column;
+.modal-footer button {
+    color: black;
+    background-color: #f2eaea;
+    border-color: #ddd;
+}
+
+.modal-footer button:hover {
+    color: white;
+    background-color: #d3c4c4;
+    border-color: #ddd;
+}
+
+.modal-footer button:active {
+    color: black;
+    background-color: #f2eaea;
+    border-color: #ddd;
 }

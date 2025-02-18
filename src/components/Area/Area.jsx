@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Area.css';
 import AreaDetail from '../AreaDetail/AreaDetail';
 
@@ -9,7 +9,6 @@ const Area = ({ areaType }) => {
 
   const handleClick = () => {
     setShowAreaDetail(!showAreaDetail);
-    console.log(showAreaDetail)
   }
 
   return (
@@ -24,8 +23,8 @@ const Area = ({ areaType }) => {
         <p>
           {"Los usuarios han puntuado esta área en " + areaType.puntuacion}
         </p>
-      </div>
       {showAreaDetail ? <AreaDetail areaTypeDetail={areaType}/> : <></>}
+      </div>
     </>
   )
 }
