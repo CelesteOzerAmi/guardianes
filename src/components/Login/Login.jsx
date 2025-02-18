@@ -41,18 +41,15 @@ const Login = () => {
         } else {
           setError('Correo o contraseña incorrectos');
           setLoading(false);
-          navigate('/home');
         }
       } else {
         setError('Error en el servidor');
         setLoading(false);
-        navigate('/home');
       }
     } catch (err) {
       console.error('Error:', err);
       setError('Error de conexión');
       setLoading(false);
-      navigate('/home');
     }
   };
 
