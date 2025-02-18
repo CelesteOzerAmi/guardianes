@@ -101,6 +101,12 @@ const Register = () => {
       <p>
         <Link to="/">Ya tengo una cuenta</Link>
       </p>
+      {/* Spinner */}
+      {loading && (
+        <div className="spinner-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
     </div>
   );
 };
