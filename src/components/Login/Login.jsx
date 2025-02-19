@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { setUser } from '../../storage/userSlice';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
@@ -8,6 +10,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,6 +42,7 @@ const Login = () => {
           setTimeout(() => {
             navigate('/home');
           }, 2000);
+          dispatch(setUser(data.user));
         } else {
           setError('Correo o contraseña incorrectos');
           setLoading(false);
