@@ -15,13 +15,16 @@ const Species = ({ typeSpecies }) => {
     <>
       <div className='species' onClick={handleClick}>
         <h2>
-          {typeSpecies.nombre}
+          {typeSpecies.commonName}
         </h2>
         <p>
-          {"Esta especie se encuentra usualmente en " + typeSpecies.ubicacion}
+          {"Nombre científico: " + typeSpecies.scientificName}
         </p>
         <p>
-          {"Los usuarios han puntuado esta especie en " + typeSpecies.puntuacion}
+          {"Categoría: " + typeSpecies.category}
+        </p>
+        <p>
+          {"Estado de conservción: " + typeSpecies.conservationStatus}
         </p>
         {showSpeciesDetail ? <SpeciesDetail SpeciesTypeDetail={typeSpecies} /> : <></>}
       </div>
