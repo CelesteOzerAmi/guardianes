@@ -3,11 +3,13 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
-
+import { useDispatch } from "react-redux";
+import { logout } from "../../storage/userSlice";
 
 const NavBar = () => {
 
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -39,7 +41,9 @@ const NavBar = () => {
                 </Navbar.Text>
 
                 <Navbar.Text className='navbar-element'>
-                  <a href="./">Cerrar sesión </a>
+                  <button onClick={() => dispatch(logout())}>
+                    <a href="./">Cerrar sesión</a>
+                  </button>
                 </Navbar.Text>
               </>
                 : <>
