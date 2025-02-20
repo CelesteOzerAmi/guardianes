@@ -2,3 +2,7 @@
 .navbar .navbar-element {
     padding: 0% 3%;
 }
+
+.navbar a {
+    text-decoration: none;
+}

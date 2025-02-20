@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Area.css';
 import AreaDetail from '../AreaDetail/AreaDetail';
+import Button from 'react-bootstrap/Button';
 
 
 const Area = ({ areaType }) => {
@@ -8,7 +9,7 @@ const Area = ({ areaType }) => {
   const [showAreaDetail, setShowAreaDetail] = useState(false);
 
   const handleClick = () => {
-    setShowAreaDetail(!showAreaDetail);
+    setShowAreaDetail(true);
   }
 
   return (
@@ -23,7 +24,11 @@ const Area = ({ areaType }) => {
         <p>
           {"Los usuarios han puntuado esta área en " + areaType.puntuacion}
         </p>
-      {showAreaDetail ? <AreaDetail areaTypeDetail={areaType}/> : <></>}
+        {showAreaDetail ?
+          
+          <AreaDetail areaTypeDetail={areaType} />
+          
+          : <></>}
       </div>
     </>
   )

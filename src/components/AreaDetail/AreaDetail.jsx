@@ -3,6 +3,8 @@ import './AreaDetail.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
+import Comments from '../Comments/Comments';
+import Stars from '../Stars/Stars';
 
 const AreaDetail = (props) => {
 
@@ -31,7 +33,12 @@ const AreaDetail = (props) => {
                     </p>
                     <p>{areaData.ubicacion}</p>
                     <p>{areaData.puntuacion}</p>
-
+                    <div>
+                        <Stars />
+                    </div>
+                    <div>
+                        <Comments />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Cerrar</Button>
