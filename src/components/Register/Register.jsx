@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../storage/userSlice';
+import { useSelector } from 'react-redux';
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -10,6 +14,8 @@ const Register = () => {
   const [userName, setUserName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const usuario = useSelector((state) => state.user);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -49,6 +55,11 @@ const Register = () => {
         setTimeout(() => {
           navigate('/home');
         }, 2000);
+        let userData = JSON.stringify({User});
+        dispatch(setUser(userData.user));
+        console.log(userData);
+        console.log(usuario);
+
       } else {
         setError('Registro no válido');
       }

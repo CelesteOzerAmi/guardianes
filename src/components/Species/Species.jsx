@@ -8,7 +8,6 @@ const Species = ({ typeSpecies }) => {
 
   const handleClick = () => {
     setShowSpeciesDetail(!showSpeciesDetail);
-    console.log(showSpeciesDetail)
   }
 
 
