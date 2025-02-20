@@ -4,7 +4,20 @@ import './Register.css';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../storage/userSlice';
 import { useSelector } from 'react-redux';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the styles
 
+const notify = () => toast.success('Usuario registrado, inicie sesión.', {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: false,
+  draggable: false,
+  progress: undefined,
+  theme: "dark",
+  transition: Bounce,
+  });
 
 const Register = () => {
   const navigate = useNavigate();
@@ -29,6 +42,7 @@ const Register = () => {
         email: email,
         password: password,
       };
+
       const response = await fetch(
         'https://mammal-excited-tarpon.ngrok-free.app/api/user/register?secret=TallerReact2025!',
         {
@@ -36,9 +50,7 @@ const Register = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            User
-          }),
+          body: JSON.stringify({ User }),
         }
       );
 
@@ -49,17 +61,8 @@ const Register = () => {
       const data = await response.json();
       console.log('Respuesta del servidor:', data);
 
-      // Adjust this according to your API's response structure
       if (data.result) {
-        // Navigate to home after successful registration
-        setTimeout(() => {
-          navigate('/home');
-        }, 2000);
-        let userData = JSON.stringify({User});
-        dispatch(setUser(userData.user));
-        console.log(userData);
-        console.log(usuario);
-
+        notify();
       } else {
         setError('Registro no válido');
       }
@@ -104,7 +107,7 @@ const Register = () => {
           onChange={(e) => setUserName(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>
+        <button className="registerButton" type="submit" disabled={loading}>
           {loading ? 'Registrando...' : 'Registrar cuenta nueva'}
         </button>
       </form>
@@ -118,6 +121,19 @@ const Register = () => {
           <div className="spinner"></div>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   );
 };
