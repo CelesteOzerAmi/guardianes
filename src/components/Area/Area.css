@@ -1,22 +1,11 @@
-
 .area {
-    width: 65%;
+    width: 70%;
     height: 80%;
     margin: 1% 0% 5%;
     padding: 2% 5%;
     border: 1px solid #ddd;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #f9f9f9;
-}
-
-.area a {
-    text-decoration: none;
-    color: black;
-}
-
-.area:hover {
-    transform:  scale(1.1);
-    transition: 0.3s;
 }
 
 .area h2 {
@@ -25,10 +14,12 @@
 }
 
 .area p {
-    width: 100%;
-    border: none;
+    border: none !important;
+    text-align: start  !important;
+    padding: 1% 0% !important;
 }
 
-.element {
-    display: none;
+.area:hover {
+    transform:  scale(1.1);
+    transition: 0.3s;
 }

@@ -1,10 +1,10 @@
 .species {
-    width: 65%;
-    height: 80%;
+    width: 70%;
+    height: 90%;
     margin: 1% 0% 5%;
     padding: 2% 5%;
     border: 1px solid #ddd;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #f9f9f9;
 }
 
@@ -14,8 +14,9 @@
 }
 
 .species p {
-    width: 100%;
-    border: none;
+    border: none !important;
+    text-align: start  !important;
+    padding: 1% 0% !important;
 }
 
 .species:hover {

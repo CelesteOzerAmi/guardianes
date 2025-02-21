@@ -9,9 +9,12 @@
     font-size: 40px;
 }
 
+.list-species .dropdown {
+    padding: 1% 0%;
+}
+
 .list-species .dropdown button{
     position: relative;
-    top: 20px;
     left: 80%;
     border: 1px solid #ddd;
     color: black;
@@ -41,8 +44,9 @@
 
 
 .list-species section {
-    margin: 4% 5%;
+    margin: 1% 5%;
     display: grid;
     grid-template-columns: auto auto auto;
     justify-items: center;
 }
+

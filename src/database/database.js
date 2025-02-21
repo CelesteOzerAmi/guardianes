@@ -1,32 +1,32 @@
 const dbAreas = [
     {
         id: 1,
-        nombre: "lago merin",
+        nombre: "a lago merin",
         ubicacion: "rivera",
         puntuacion: "4/5"
     },
     {
         id: 2,
-        nombre: "lago merin",
-        ubicacion: "rivera",
+        nombre: "z lago merin",
+        ubicacion: "brasil",
         puntuacion: "4/5"
     },
     {
         id: 3,
-        nombre: "lago merin",
+        nombre: "b lago merin",
         ubicacion: "rivera",
         puntuacion: "4/5"
     },
     {
         id: 4,
-        nombre: "lago merin",
-        ubicacion: "rivera",
+        nombre: "r lago merin",
+        ubicacion: "brasil",
         puntuacion: "4/5"
     },
     {
         id: 5,
-        nombre: "lago merin",
-        ubicacion: "rivera",
+        nombre: "g lago merin",
+        ubicacion: "zona roja",
         puntuacion: "4/5"
     }
 ]

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Area.css';
 import AreaDetail from '../AreaDetail/AreaDetail';
-import Button from 'react-bootstrap/Button';
 
 
 const Area = ({ areaType }) => {

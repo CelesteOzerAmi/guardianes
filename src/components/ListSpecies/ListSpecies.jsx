@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import Species from '../Species/Species';
 import SpeciesFilter from '../SpeciesFilter/SpeciesFilter';
+import './ListSpecies.css';
+import { useDispatch } from "react-redux";
+import { setSpecies } from '../../storage/speciesSlice';
+import { useSelector } from 'react-redux';
+
 
 const ListSpecies = () => {
     const [listSpecies, setListSpecies] = useState(null); // Estado inicial en null
     const [loading, setLoading] = useState(true); // Estado de carga
+    const dispatch = useDispatch();
+    const species = useSelector((state) => state.species);
 
     useEffect(() => {
         const fetchSpecies = async () => {
@@ -27,6 +34,8 @@ const ListSpecies = () => {
                 console.log("✅ API Response:", data);
 
                 setListSpecies(data.items || []); // Guardamos las especies en el estado
+                dispatch(setSpecies(data.items)); // Cargamos datos en speciesSlice (Redux)
+
             } catch (err) {
                 console.error("❌ Error fetching species:", err);
                 setListSpecies([]); // Si hay error, ponemos lista vacía
@@ -37,6 +46,10 @@ const ListSpecies = () => {
 
         fetchSpecies();
     }, []);
+
+    useEffect(() => {
+        setListSpecies(species);
+    }, [species]);
 
     if (loading) return <p>Cargando especies...</p>; // Mostrar carga mientras se espera la respuesta
 

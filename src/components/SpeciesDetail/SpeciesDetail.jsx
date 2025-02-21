@@ -8,34 +8,103 @@ const SpeciesDetail = (props) => {
 
     const [modalShow, setModalShow] = useState(true);
     let SpeciesData = props.SpeciesTypeDetail;
+    let statusSentence = '';
+
+    switch (SpeciesData.conservationStatus) {
+        case 'Extinto':
+            statusSentence = 'extinta.';
+            break;
+        case 'Población normal':
+            statusSentence = 'fuera de peligro, con una población normal.';
+            break;
+        case 'Sobrepoblación':
+            statusSentence = 'fuera de peligro, presentando sobrepoblación.';
+            break;
+        case 'En peligro':
+            statusSentence = 'vulnerable, en peligro de extinción.';
+            break;
+        case 'Preocupación menor':
+            statusSentence = 'vulnerable, pero fuera de riesgo de extinción.';
+            break;
+        default:
+            break;
+    };
+
+    let speciesKind = '';
+
+    switch (SpeciesData.category) {
+        case 'Ave':
+            speciesKind = 'ave'
+            break;
+        case 'Mamífero':
+        case 'Mamifero':
+        case 'Mamiferos':
+        case 'Tremendo Mamífero':
+            speciesKind = 'mamífero'
+            break;
+        case 'Molusco':
+            speciesKind = 'molusco'
+            break;
+        case 'Arácnido':
+            speciesKind = 'arácnido'
+            break;
+        case 'Planta':
+            speciesKind = 'planta'
+            break;
+        case 'Hongo':
+            speciesKind = 'fungi'
+            break;
+        default:
+            break;
+    };
+
+    let kingdomType = '';
+
+    switch (speciesKind) {
+        case 'ave':
+        case 'mamífero':
+        case 'arácnido':
+        case 'molusco':
+            kingdomType = 'animal'
+            break;
+        case 'planta':
+            kingdomType = 'vegetal'
+            break;
+        case 'fungi':
+            kingdomType = 'fungi'
+            break;
+        default:
+            break;
+    };
+
 
     function SpeciesDetailModal(props) {
         return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        {SpeciesData.id}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </p>
-                    <p>{SpeciesData.ubicacion}</p>
-                    <p>{SpeciesData.puntuacion}</p>
+            <>
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            {SpeciesData.commonName}
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div>
+                            <p>Su nombre científico es {SpeciesData.scientificName}.</p>
+                            <p>Es un espécimen de {speciesKind} dentro del reino {kingdomType}.</p>
+                            <p>Actualmente, esta especie se encuentra {statusSentence}</p>
+                        </div>
 
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Cerrar</Button>
-                </Modal.Footer>
-            </Modal>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={props.onHide}>Cerrar</Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
         );
     }
 
@@ -46,6 +115,7 @@ const SpeciesDetail = (props) => {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
+
         </>)
 }
 
