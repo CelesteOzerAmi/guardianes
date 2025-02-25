@@ -15,14 +15,21 @@ const Area = ({ areaType }) => {
     <>
       <div className='area' onClick={handleClick}>
         <h2>
-          {areaType.nombre}
+          {areaType.name}
         </h2>
         <p>
-          {"Esta área se encuentra usualmente en " + areaType.ubicacion}
+          {"Esta área se encuentra en: " + areaType.location}
         </p>
         <p>
-          {"Los usuarios han puntuado esta área en " + areaType.puntuacion}
+          {"Tipo de área: " + areaType.areaType}
         </p>
+        <p>
+          {"Descripión: " + areaType.description}
+        </p>
+        <p>
+          {"Estado de conservación: " + areaType.conservationStatus}
+        </p>
+        <img src={areaType.imageUrl} alt={areaType.name}/>
         {showAreaDetail ?
           
           <AreaDetail areaTypeDetail={areaType} />

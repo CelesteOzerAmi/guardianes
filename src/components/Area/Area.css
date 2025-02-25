@@ -23,3 +23,13 @@
     transform:  scale(1.1);
     transition: 0.3s;
 }
+
+.area img {
+    width: 100%;
+    max-width: 200px; /* Ensures images don't exceed this width */
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    border-radius: 10px;
+    display: block;
+    margin: 10px auto;
+}
