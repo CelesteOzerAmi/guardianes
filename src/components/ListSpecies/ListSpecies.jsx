@@ -1,3 +1,4 @@
+import './ListSpecies.css';
 import { useState, useEffect } from "react";
 import Species from '../Species/Species';
 import SpeciesFilter from '../SpeciesFilter/SpeciesFilter';
@@ -28,16 +29,16 @@ const ListSpecies = () => {
                 );
 
                 const text = await response.text();
-                console.log("🔎 Raw response:", text);
+                console.log("Raw response:", text);
 
                 const data = JSON.parse(text);
-                console.log("✅ API Response:", data);
+                console.log("API Response:", data);
 
                 setListSpecies(data.items || []); // Guardamos las especies en el estado
                 dispatch(setSpecies(data.items)); // Cargamos datos en speciesSlice (Redux)
 
             } catch (err) {
-                console.error("❌ Error fetching species:", err);
+                console.error("Error fetching species:", err);
                 setListSpecies([]); // Si hay error, ponemos lista vacía
             } finally {
                 setLoading(false); // Terminó la carga
