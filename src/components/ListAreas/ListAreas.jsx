@@ -8,14 +8,18 @@ import { setArea } from '../../storage/areaSlice';
 const ListAreas = () => {
     const [listAreas, setListAreas] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize] = useState(10); // Cantidad de áreas por página
+
     const dispatch = useDispatch();
     const area = useSelector((state) => state.area);
 
     useEffect(() => {
         const fetchAreas = async () => {
+            setLoading(true);
             try {
                 const response = await fetch(
-                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
+                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=${currentPage}&pageSize=${pageSize}`,
                     {
                         method: 'GET',
                         headers: {
@@ -42,11 +46,21 @@ const ListAreas = () => {
         };
 
         fetchAreas();
-    }, []);
+    }, [currentPage]); // Se ejecuta cuando cambia la página
 
     useEffect(() => {
         setListAreas(area);
     }, [area]);
+
+    const handleNextPage = () => {
+        setCurrentPage((prev) => prev + 1);
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage((prev) => prev - 1);
+        }
+    };
 
     if (loading) return <p>Cargando áreas protegidas...</p>;
 
@@ -61,7 +75,7 @@ const ListAreas = () => {
             </p>
             <AreaFilter className='areafilter' />
             <section>
-                {listAreas.length > 0 ? (
+                {listAreas && listAreas.length > 0 ? (
                     listAreas.map((areaType) => (
                         <Area areaType={areaType} key={areaType.id} />
                     ))
@@ -69,6 +83,13 @@ const ListAreas = () => {
                     <p>No hay áreas disponibles.</p>
                 )}
             </section>
+            <div className="pagination">
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                    Anterior
+                </button>
+                <span>Página {currentPage}</span>
+                <button onClick={handleNextPage}>Siguiente</button>
+            </div>
         </div>
     );
 };

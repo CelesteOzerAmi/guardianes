@@ -2,28 +2,29 @@ import './ListSpecies.css';
 import { useState, useEffect } from "react";
 import Species from '../Species/Species';
 import SpeciesFilter from '../SpeciesFilter/SpeciesFilter';
-import './ListSpecies.css';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSpecies } from '../../storage/speciesSlice';
-import { useSelector } from 'react-redux';
-
 
 const ListSpecies = () => {
-    const [listSpecies, setListSpecies] = useState(null); // Estado inicial en null
-    const [loading, setLoading] = useState(true); // Estado de carga
+    const [listSpecies, setListSpecies] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize] = useState(10); // Cantidad de especies por página
+
     const dispatch = useDispatch();
     const species = useSelector((state) => state.species);
 
     useEffect(() => {
         const fetchSpecies = async () => {
+            setLoading(true);
             try {
                 const response = await fetch(
-                    `https://mammal-excited-tarpon.ngrok-free.app/api/species/list?page=1&pageSize=10`,
+                    `https://mammal-excited-tarpon.ngrok-free.app/api/species/list?page=${currentPage}&pageSize=${pageSize}`,
                     {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
-                            'ngrok-skip-browser-warning': 'true' // Puede evitar bloqueos de ngrok
+                            'ngrok-skip-browser-warning': 'true'
                         }
                     }
                 );
@@ -34,25 +35,35 @@ const ListSpecies = () => {
                 const data = JSON.parse(text);
                 console.log("API Response:", data);
 
-                setListSpecies(data.items || []); // Guardamos las especies en el estado
-                dispatch(setSpecies(data.items)); // Cargamos datos en speciesSlice (Redux)
+                setListSpecies(data.items || []);
+                dispatch(setSpecies(data.items));
 
             } catch (err) {
                 console.error("Error fetching species:", err);
-                setListSpecies([]); // Si hay error, ponemos lista vacía
+                setListSpecies([]);
             } finally {
-                setLoading(false); // Terminó la carga
+                setLoading(false);
             }
         };
 
         fetchSpecies();
-    }, []);
+    }, [currentPage]); // Se ejecuta cuando cambia la página
 
     useEffect(() => {
         setListSpecies(species);
     }, [species]);
 
-    if (loading) return <p>Cargando especies...</p>; // Mostrar carga mientras se espera la respuesta
+    const handleNextPage = () => {
+        setCurrentPage((prev) => prev + 1);
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage((prev) => prev - 1);
+        }
+    };
+
+    if (loading) return <p>Cargando especies...</p>;
 
     return (
         <div className="list-species">
@@ -62,14 +73,21 @@ const ListSpecies = () => {
             </p>
             <SpeciesFilter className="speciesfilter" />
             <section>
-                {listSpecies.length > 0 ? (
+                {listSpecies && listSpecies.length > 0 ? (
                     listSpecies.map((typeSpecies) => (
                         <Species typeSpecies={typeSpecies} key={typeSpecies.id} />
                     ))
                 ) : (
-                    <p>No hay especies disponibles.</p> // Mensaje si no hay especies
+                    <p>No hay especies disponibles.</p>
                 )}
             </section>
+            <div className="pagination">
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                    Anterior
+                </button>
+                <span>Página {currentPage}</span>
+                <button onClick={handleNextPage}>Siguiente</button>
+            </div>
         </div>
     );
 };
