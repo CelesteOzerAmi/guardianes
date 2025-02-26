@@ -1,12 +1,19 @@
 .area {
     width: 70%;
-    height: 80%;
-    margin: 1% 0% 5%;
+    max-width: 400px; /* Prevents it from stretching too much */
+    min-height: 250px; /* Ensures it maintains a reasonable size */
+    margin: 1% auto; /* Centers the card */
     padding: 2% 5%;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #f9f9f9;
+    overflow: hidden; /* Prevents content from overflowing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
+
 
 .area h2 {
     font-weight: 200;
@@ -27,8 +34,10 @@
 .area img {
     width: 100%;
     max-width: 200px; /* Ensures images don't exceed this width */
-    height: 150px; /* Set a fixed height */
-    object-fit: cover; /* Ensures the image fills the space without distortion */
+    height: auto; /* Makes the height adjust dynamically */
+    max-height: 150px; /* Ensures it doesn’t surpass the card */
+    object-fit: contain; /* Keeps the full image inside */
+    aspect-ratio: 4 / 3; /* Ensures a consistent aspect ratio */
     border-radius: 10px;
     display: block;
     margin: 10px auto;
