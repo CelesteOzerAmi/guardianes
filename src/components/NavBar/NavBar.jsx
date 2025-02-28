@@ -17,9 +17,6 @@ const NavBar = () => {
         <Container>
           <Navbar.Brand href="/home">Guardianes del entorno</Navbar.Brand>
           <Navbar.Text className='navbar-element'>
-            <a href="./home">Inicio</a>
-          </Navbar.Text>
-          <Navbar.Text className='navbar-element'>
             <a href="/activities">Actividades de conservación</a>
           </Navbar.Text>
           {

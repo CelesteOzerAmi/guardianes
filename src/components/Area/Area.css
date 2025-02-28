@@ -1,12 +1,8 @@
 .area {
     width: 70%;
-<<<<<<< HEAD
-    margin: 1% 0% 5%;
-=======
     max-width: 400px; /* Prevents it from stretching too much */
     min-height: 250px; /* Ensures it maintains a reasonable size */
     margin: 1% auto; /* Centers the card */
->>>>>>> c4ba1da14ec0de41684fafe8a0b042b0775f6ab3
     padding: 2% 5%;
     border: 1px solid #ddd;
     border-radius: 10px;
