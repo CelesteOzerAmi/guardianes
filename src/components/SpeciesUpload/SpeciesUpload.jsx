@@ -1,53 +1,98 @@
 import './SpeciesUpload.css';
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const SpeciesUpload = () => {
+    const [speciesName, setSpeciesName] = useState('');
+    const [scientificName, setScientificName] = useState('');
+    const [category, setCategory] = useState('');
+    const [conservationStatus, setConservationStatus] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const payload = {
+            userId: 1,
+            species: {
+                commonName: speciesName,
+                scientificName: scientificName,
+                category: category,
+                conservationStatus: conservationStatus,
+                naturalAreaId: 67
+            }
+        };
+    
+        console.log("Payload:", JSON.stringify(payload, null, 2));
+    
+        try {
+            const response = await fetch('https://mammal-excited-tarpon.ngrok-free.app/api/species/insert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
+                body: JSON.stringify(payload),
+            });
+    
+            const responseData = await response.json(); // Read response
+    
+            if (response.ok) {
+                alert("Especie registrada con éxito");
+            } else {
+                console.error("Server Error:", responseData);
+                alert("Error en la respuesta del servidor: " + responseData.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error de conexión o en el servidor");
+        }
+    };    
+
     return (
         <>
             <NavBar />
             <div className='species-upload'>
-                <h1>
-                    Registrar nueva especie protegida
-                </h1>
+                <h1>Registrar nueva especie protegida</h1>
                 <section>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="speciesName">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" required />
+                            <Form.Control 
+                                type="text" 
+                                required 
+                                value={speciesName} 
+                                onChange={(e) => setSpeciesName(e.target.value)} 
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="speciesName">
+                            <Form.Label>Nombre Científico</Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                required 
+                                value={scientificName} 
+                                onChange={(e) => setScientificName(e.target.value)} 
+                            />
                         </Form.Group>
                         <Form.Label>Categoría</Form.Label>
-                        <Form.Select aria-label="Default select example">
-                            <option>Seleccionar</option>
-                            <option value="1">Mamífero</option>
-                            <option value="2">Ave</option>
-                            <option value="3">Planta</option>
-                            <option value="3">Fungi</option>
+                        <Form.Select required onChange={(e) => setCategory(e.target.value)}>
+                            <option value="">Seleccionar</option>
+                            <option value="Mamífero">Mamífero</option>
+                            <option value="Ave">Ave</option>
+                            <option value="Planta">Planta</option>
+                            <option value="Fungi">Fungi</option>
                         </Form.Select>
                         <br />
-                        <Form.Group className="mb-3" controlId="speciesLocation">
-                            <Form.Label>Ubicación</Form.Label>
-                            <Form.Control type="text" required />
-                        </Form.Group>
                         <Form.Label>Estado de conservación</Form.Label>
-                        <Form.Select aria-label="Default select example">
-                            <option>Seleccionar</option>
-                            <option value="1">En peligro</option>
-                            <option value="2">Vulnerable</option>
-                            <option value="3">En cautiverio</option>
-                            <option value="4">Estable</option>
+                        <Form.Select required onChange={(e) => setConservationStatus(e.target.value)}>
+                            <option value="">Seleccionar</option>
+                            <option value="En peligro">En peligro</option>
+                            <option value="Vulnerable">Vulnerable</option>
+                            <option value="En cautiverio">En cautiverio</option>
+                            <option value="Estable">Estable</option>
                         </Form.Select>
                         <br />
-                        <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label>Cargar imagen</Form.Label>
-                            <Form.Control type="file" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="speciesInfo">
-                            <Form.Label>Información adicional</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
-                        </Form.Group>
                         <Button variant="primary" type="submit">
                             Registrar
                         </Button>
@@ -55,7 +100,7 @@ const SpeciesUpload = () => {
                 </section>
             </div>
         </>
-    )
+    );
 }
 
-export default SpeciesUpload
+export default SpeciesUpload;
