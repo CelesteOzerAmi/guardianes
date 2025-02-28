@@ -1,0 +1,26 @@
+.profile-section {
+    margin: 2%;
+}
+
+.profile-section .profile-title {
+    font-weight: 200;
+    font-size: 45px;
+    position: relative;
+    left: 8%;
+}
+
+.profile-section .profile-subtitle {
+    font-weight: 300;
+    font-size: 25px;
+    position: relative;
+    left: 8%;
+    margin-bottom: 3%;
+    width: fit-content;
+}
+
+.profile-arealist {
+    margin: 1% ;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-items: center;
+}

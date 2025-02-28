@@ -9,31 +9,44 @@ const AreaFilter = () => {
     const area = useSelector((state) => state.area);
     const dispatch = useDispatch();
 
-    const areaArray = [...area];
-
     const nameFilter = () => {
-        areaArray.sort((a, b) => a.nombre.localeCompare(b.nombre));
-        dispatch(setArea(areaArray.area));
-        console.log(area);
-    }
+        const areaArray = [...area];
+        areaArray.sort((a, b) => a.name.localeCompare(b.name));
+        dispatch(setArea(areaArray));
+    };
 
+    const areaTypeFilter = () => {
+        const areaArray = [...area];
+        areaArray.sort((a, b) => a.areaType.localeCompare(b.areaType));
+        dispatch(setArea(areaArray));
+    };
+
+    const regionFilter = () => {
+        const areaArray = [...area];
+        areaArray.sort((a, b) => a.region.localeCompare(b.region));
+        dispatch(setArea(areaArray));
+    };
+
+    const conservationStatusFilter = () => {
+        const areaArray = [...area];
+        areaArray.sort((a, b) => a.conservationStatus.localeCompare(b.conservationStatus));
+        dispatch(setArea(areaArray));
+    };
 
     return (
-        <>
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Filtros
-                </Dropdown.Toggle>
+        <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Filtros
+            </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={nameFilter}>Nombre</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Tipo</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Región</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Estado</Dropdown.Item>
+            <Dropdown.Menu>
+                <Dropdown.Item onClick={nameFilter}>Nombre común</Dropdown.Item>
+                <Dropdown.Item onClick={areaTypeFilter}>Categoría</Dropdown.Item>
+                <Dropdown.Item onClick={regionFilter}>Región</Dropdown.Item>
+                <Dropdown.Item onClick={conservationStatusFilter}>Estado de conservación</Dropdown.Item>
 
-                </Dropdown.Menu>
-            </Dropdown>
-        </>
+            </Dropdown.Menu>
+        </Dropdown>
     )
 }
 

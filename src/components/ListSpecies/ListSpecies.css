@@ -34,8 +34,12 @@
 }
 
 .list-species p {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 2% 0%;
     text-align: justify;
     justify-self: center;
+    width: 90%;
 }
 
 

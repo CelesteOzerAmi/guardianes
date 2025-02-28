@@ -1,15 +1,17 @@
-import React from 'react';
 import './AreaDetail.css';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import Comments from '../Comments/Comments';
 import Stars from '../Stars/Stars';
+import { useSelector } from 'react-redux';
 
 const AreaDetail = (props) => {
 
-    const [modalShow, setModalShow] = useState(true);
     let areaData = props.areaTypeDetail;
+    const [modalShow, setModalShow] = useState(true);
+    const user = useSelector((state) => state.user);
 
 
     function AreaDetailModal(props) {
@@ -22,23 +24,25 @@ const AreaDetail = (props) => {
             >
                 <Modal.Header closeButton >
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {areaData.id}
+                        {areaData.name}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </p>
-                    <p>{areaData.ubicacion}</p>
-                    <p>{areaData.puntuacion}</p>
-                    <div>
-                        <Stars />
-                    </div>
-                    <div>
-                        <Comments />
-                    </div>
+                    <p>{areaData.description}</p>
+                    <p>Tipo de área: {areaData.areaType}</p>
+                    <p>Ubicación: {areaData.location}</p>
+                    <p>Región: {areaData.region}</p>
+                    <p>Estado de conservación: {areaData.conservationStatus}</p>
+                    <img src={areaData.imageUrl} alt={areaData.name} />
+                    {
+                        user ?
+                            <div>
+                                <Stars />
+                                <Comments areaData={areaData}/>
+                            </div>
+                            :
+                            <></>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Cerrar</Button>

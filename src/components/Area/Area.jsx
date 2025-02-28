@@ -24,9 +24,6 @@ const Area = ({ areaType }) => {
           {"Tipo de área: " + areaType.areaType}
         </p>
         <p>
-          {"Descripión: " + areaType.description}
-        </p>
-        <p>
           {"Estado de conservación: " + areaType.conservationStatus}
         </p>
         <img src={areaType.imageUrl} alt={areaType.name}/>

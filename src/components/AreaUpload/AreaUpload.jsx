@@ -48,7 +48,7 @@ const AreaUpload = () => {
                             <Form.Control as="textarea" rows={3} />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Submit
+                            Registrar
                         </Button>
                     </Form>
                 </section>

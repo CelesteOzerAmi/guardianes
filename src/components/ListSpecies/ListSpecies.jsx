@@ -2,10 +2,8 @@ import './ListSpecies.css';
 import { useState, useEffect } from "react";
 import Species from '../Species/Species';
 import SpeciesFilter from '../SpeciesFilter/SpeciesFilter';
-import './ListSpecies.css';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSpecies } from '../../storage/speciesSlice';
-import { useSelector } from 'react-redux';
 
 
 const ListSpecies = () => {

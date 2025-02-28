@@ -19,7 +19,9 @@ const NavBar = () => {
           <Navbar.Text className='navbar-element'>
             <a href="./home">Inicio</a>
           </Navbar.Text>
-          <Navbar.Text className='navbar-element'>Puntuación</Navbar.Text>
+          <Navbar.Text className='navbar-element'>
+            <a href="/activities">Actividades de conservación</a>
+          </Navbar.Text>
           {
             user ?
               <>

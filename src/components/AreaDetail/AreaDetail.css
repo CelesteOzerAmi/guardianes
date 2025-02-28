@@ -1,3 +1,22 @@
+.modal-header .modal-title{
+    font-weight: 200;
+    font-size: 30px;
+    padding-left: 2%;
+}
+
+.modal-body img{
+    position: relative;
+    left: 5%;
+    width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 1% 0%;
+}
+
+.modal-body p {
+    padding-left: 5%;
+}
+
 .modal-footer button {
     color: black;
     background-color: #f2eaea;
