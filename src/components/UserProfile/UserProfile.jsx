@@ -5,6 +5,9 @@ import Species from '../Species/Species';
 import Activities from '../Activities/Activities';
 import NavBar from '../NavBar/NavBar';
 import './UserProfile.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const UserProfile = () => {
 
@@ -99,6 +102,30 @@ const UserProfile = () => {
 
     if (loading) return <p>Cargando áreas y especies...</p>;
 
+    var areaSliderSettings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
+
+    var speciesSliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
+
+    var activitiesSliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
+
     return (
         <>
             <NavBar />
@@ -106,41 +133,52 @@ const UserProfile = () => {
                 <h1 className='profile-title'>{user.name}</h1>
                 <h2 className='profile-subtitle'>Áreas cargadas</h2>
                 <section className='profile-arealist'>
-                    {listAreas != null ? (
-                        listAreas.map((areaType) => (
-                            <Area areaType={areaType} key={areaType.id} />
-                        ))
-                    ) : (
-                        <p>No hay áreas cargadas.</p>
-                    )}
+
+                    {
+                        listAreas === null || listAreas.length === 0 ?
+                            <p className='profile-text'>No hay áreas cargadas.</p> :
+                            <>
+                                <Slider {...areaSliderSettings}>
+                                    {listAreas.map((areaType) => (
+                                        <Area areaType={areaType} key={areaType.id} />
+                                    ))
+                                    }
+                                </Slider>
+                            </>
+                    }
                 </section>
 
                 <h2 className='profile-subtitle'>Especies cargadas</h2>
                 <section className='profile-arealist'>
-                    {listSpecies != null ? (
-                        listSpecies.map((speciesType) => (
-                            <Species typeSpecies={speciesType} key={speciesType.id} />
-                        ))
-                    ) : (
-                        <p>No hay especies cargadas.</p>
-                    )}
+                    {
+                        listSpecies === null || listSpecies.length === 0 ?
+                            <p className='profile-text'>No hay especies cargadas.</p>
+                            :
+                            <Slider {...speciesSliderSettings}>
+
+                                {
+                                    listSpecies.map((speciesType) => (
+                                        <Species typeSpecies={speciesType} key={speciesType.id} />
+                                    ))
+                                }
+                            </Slider>
+                    }
                 </section>
 
                 <h2 className='profile-subtitle'>Actividades cargadas</h2>
                 <section className='profile-arealist'>
-                    {listActivities != null ? (
-                        listActivities.map((activityType) => (
-                            <Activities activityType={activityType} key={activityType.id} />
-                        ))
-                    ) : (
-                        <p>No hay actividades cargadas.</p>
-                    )}
-                </section>
-                <h2 className='profile-subtitle'>
-                    Mis comentarios
-                </h2>
-                <section>
-
+                    {
+                        listActivities === null || listActivities.length === 0 ?
+                            <p className='profile-text'>No hay actividades cargadas.</p>
+                            :
+                            <Slider {...activitiesSliderSettings}>
+                                {
+                                    listActivities.map((activity) => (
+                                        <Activities activity={activity} key={activity.id} />
+                                    ))
+                                }
+                            </Slider>
+                    }
                 </section>
             </section>
         </>

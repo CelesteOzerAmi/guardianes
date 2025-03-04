@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/speciesupload" element={<SpeciesUpload />} />    
           <Route path="/user" element={<UserProfile />} />        
           <Route path="/activities" element={<ActivitiesList/>}/>
-          <Route path="/uploadactivities" element={<ActivitiesUpload/>}/>          
+          <Route path="/uploadactivities" element={<ActivitiesUpload/>}/>        
         </Routes>
       </Router>
     </>

@@ -1,11 +1,11 @@
 
 .navbar .navbar-element {
-    padding: 0% 1%;
+    padding: 0% 2%;
 }
 
 .navbar .navbar-element:last-child {
     padding: 0%;
-    padding-left: 3%;
+    padding-left: 2%;
 }
 
 .navbar button {

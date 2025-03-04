@@ -1,0 +1,16 @@
+.comments-form {
+    display: flex;
+    gap: 20px;
+}
+
+.comments-form button {
+    background-color: #f2eaea;
+    color: black;
+    border-color: #ddd;
+}
+
+.comments-form button:hover {
+    background-color: #fff;
+    border-color: #ddd;
+    color: black;
+}

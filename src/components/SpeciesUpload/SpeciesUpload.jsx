@@ -1,26 +1,58 @@
 import './SpeciesUpload.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useSelector } from 'react-redux';
 
 const SpeciesUpload = () => {
     const [speciesName, setSpeciesName] = useState('');
     const [scientificName, setScientificName] = useState('');
     const [category, setCategory] = useState('');
+    const [naturalAreaId, setNaturalAreaId] = useState(0);
     const [conservationStatus, setConservationStatus] = useState('');
+    const [listAreas, setListAreas] = useState(null);
+    const user = useSelector((state) => state.user);
+
+    useEffect(() => {
+            const fetchAreas = async () => {
+                try {
+                    const response = await fetch(
+                        `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
+                        {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'ngrok-skip-browser-warning': 'true'
+                            }
+                        }
+                    );
+    
+                    const text = await response.text();
+                    const data = JSON.parse(text);
+                    setListAreas(data.items || []);
+                } catch (err) {
+                    console.error("Error fetching areas:", err);
+                    setListAreas([]);
+                } finally {
+                }
+            };
+    
+            fetchAreas();
+        }, []);
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         const payload = {
-            userId: 1,
+            userId: user.id,
             species: {
                 commonName: speciesName,
                 scientificName: scientificName,
                 category: category,
                 conservationStatus: conservationStatus,
-                naturalAreaId: 67
+                naturalAreaId: naturalAreaId,
             }
         };
     
@@ -82,6 +114,22 @@ const SpeciesUpload = () => {
                             <option value="Ave">Ave</option>
                             <option value="Planta">Planta</option>
                             <option value="Fungi">Fungi</option>
+                        </Form.Select>
+                        <br />
+                        <Form.Label>Área</Form.Label>
+                        <Form.Select aria-label="Default select example" onChange={(e) => setNaturalAreaId(e.target.value)}>
+
+                            {
+                                listAreas != null ?
+                                    <>
+                                        <option>Seleccionar</option>
+                                        {listAreas.map((areaType) => (
+                                            <option value={areaType.id} key={areaType.id}>{areaType.name}</option>
+                                        ))}
+                                    </>
+                                    :
+                                    <option>No hay áreas disponibles</option>
+                            }
                         </Form.Select>
                         <br />
                         <Form.Label>Estado de conservación</Form.Label>

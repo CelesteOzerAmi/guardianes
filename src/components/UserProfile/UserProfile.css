@@ -7,6 +7,7 @@
     font-size: 45px;
     position: relative;
     left: 8%;
+    margin-bottom: 4%;
 }
 
 .profile-section .profile-subtitle {
@@ -19,8 +20,12 @@
 }
 
 .profile-arealist {
-    margin: 1% ;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    justify-items: center;
+    box-sizing: border-box;
+    margin: 3%;
+}   
+
+.profile-arealist .profile-text{
+    margin-bottom: 3%;
+    margin-left: 7%;    
+    font-size: large;
 }

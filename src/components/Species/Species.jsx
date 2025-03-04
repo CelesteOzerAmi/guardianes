@@ -26,8 +26,10 @@ const Species = ({ typeSpecies }) => {
         <p>
           {"Estado de conservación: " + typeSpecies.conservationStatus}
         </p>
-        {showSpeciesDetail ? <SpeciesDetail SpeciesTypeDetail={typeSpecies} /> : <></>}
       </div>
+      {showSpeciesDetail ?
+        <SpeciesDetail SpeciesTypeDetail={typeSpecies} />
+        : <></>}
     </>
   )
 }

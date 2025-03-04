@@ -16,12 +16,13 @@ const NavBar = () => {
       <Navbar className="bg-body-tertiary navbar">
         <Container>
           <Navbar.Brand href="/home">Guardianes del entorno</Navbar.Brand>
-          <Navbar.Text className='navbar-element'>
-            <a href="/activities">Actividades de conservación</a>
-          </Navbar.Text>
+
           {
             user ?
               <>
+                <Navbar.Text className='navbar-element'>
+                  <a href="/activities">Actividades de conservación</a>
+                </Navbar.Text>
                 <Navbar.Text className='navbar-element'>
                   <a href="/areaupload">Registro de áreas</a>
                 </Navbar.Text>

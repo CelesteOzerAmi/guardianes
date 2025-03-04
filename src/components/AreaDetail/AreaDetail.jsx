@@ -38,7 +38,8 @@ const AreaDetail = (props) => {
                         user ?
                             <div>
                                 <Stars />
-                                <Comments areaData={areaData}/>
+                                <Comments areaData={areaData} naturalArea={areaData} />
+                                
                             </div>
                             :
                             <></>

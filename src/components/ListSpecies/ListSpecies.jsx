@@ -78,7 +78,7 @@ const ListSpecies = () => {
                         <Species typeSpecies={typeSpecies} key={typeSpecies.id} />
                     ))
                 ) : (
-                    <p>No hay especies disponibles.</p>
+                    <p className='list-text'>No hay especies disponibles.</p>
                 )}
             </section>
             <div className="pagination">

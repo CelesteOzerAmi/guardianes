@@ -9,7 +9,7 @@ const ListAreas = () => {
     const [listAreas, setListAreas] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize] = useState(10); // Cantidad de áreas por página
+    const [pageSize] = useState(9); // Cantidad de áreas por página
 
     const dispatch = useDispatch();
     const area = useSelector((state) => state.area);
@@ -80,7 +80,7 @@ const ListAreas = () => {
                         <Area areaType={areaType} key={areaType.id} />
                     ))
                 ) : (
-                    <p>No hay áreas disponibles.</p>
+                    <p className='list-text'>No hay áreas disponibles.</p>
                 )}
             </section>
             <div className="pagination">

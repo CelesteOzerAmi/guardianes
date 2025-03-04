@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Area.css';
 import AreaDetail from '../AreaDetail/AreaDetail';
 
@@ -8,7 +8,8 @@ const Area = ({ areaType }) => {
   const [showAreaDetail, setShowAreaDetail] = useState(false);
 
   const handleClick = () => {
-    setShowAreaDetail(true);
+
+    setShowAreaDetail(!showAreaDetail);
   }
 
   return (
@@ -26,13 +27,12 @@ const Area = ({ areaType }) => {
         <p>
           {"Estado de conservación: " + areaType.conservationStatus}
         </p>
-        <img src={areaType.imageUrl} alt={areaType.name}/>
-        {showAreaDetail ?
-          
-          <AreaDetail areaTypeDetail={areaType} />
-          
-          : <></>}
+        <img src={areaType.imageUrl} alt={areaType.name} />
+
       </div>
+      {showAreaDetail ?
+        <AreaDetail areaTypeDetail={areaType} />
+        : <></>}
     </>
   )
 }
