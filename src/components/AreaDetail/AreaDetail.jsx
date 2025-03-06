@@ -4,7 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Comments from '../Comments/Comments';
 import { useSelector } from 'react-redux';
-import Species from '../Species/Species'
+import InhabitantSpecies from '../InhabitantSpecies/InhabitantSpecies';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 
 const AreaDetail = (props) => {
     let areaData = props.areaTypeDetail;
@@ -13,17 +17,17 @@ const AreaDetail = (props) => {
     const [speciesList, setSpeciesList] = useState(null);
     let speciesPerArea = [];
 
-
     //    function for filtering species that are related to an area    //   
     const getSpecies = (areaId) => {
-        if (speciesList != null) {
+        if (speciesList !== null) {
             speciesPerArea.length = 0;
             speciesList.map(species => {
                 if (species.naturalAreaId === areaId) {
                     speciesPerArea.push(species);
                 }
             });
-        }
+        };
+        return speciesPerArea;
     };
 
 
@@ -45,23 +49,23 @@ const AreaDetail = (props) => {
                 const text = await response.text();
                 const data = JSON.parse(text);
                 setSpeciesList(data.items);
-                getSpecies(areaData.id);
 
             } catch (err) {
                 setSpeciesList([]);
-                
             }
         };
         fetchSpecies();
+        getSpecies(areaData.id);
+
     }, []);
 
-
-    //    useEffect for executing getSpecies at speciesList changes    // 
-   /* useEffect(() => {
-        
-    }, [speciesList])*/
-
-
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
 
     function AreaDetailModal(props) {
         return (
@@ -83,26 +87,36 @@ const AreaDetail = (props) => {
                     <p>Región: {areaData.region}</p>
                     <p>Estado de conservación: {areaData.conservationStatus}</p>
                     <img src={areaData.imageUrl} alt={areaData.name} className="area-image" />
-                    <p>Especies habitantes</p>
 
-                    <div>
-                        { 
-                            speciesPerArea.map((spec)=>(
-                                <p key={spec.id}>npombre</p>
-                            ))
+
+                    <div className='species-list'>
+                        {
+                            speciesList !== null ?
+                                <>
+                                    <p className='speciesList-title'>Especies habitantes</p>
+                                    <Slider {...settings}>
+                                        {speciesList.map((species) => (
+                                            species.naturalAreaId === areaData.id &&
+                                            <InhabitantSpecies areaData={areaData} key={species.id} species={species} />
+                                        ))}
+                                    </Slider>
+                                </>
+                                :
+                                <p>No hay especies asociadas a esta área</p>
                         }
+
                     </div>
 
 
                     {/* Google Maps Embed */}
-                    <iframe
-                        width="100%"
+                    {<iframe
+                        width="94%"
                         height="300"
-                        style={{ border: 0, marginTop: '10px' }}
+                        style={{ border: 0, margin: '3%' }}
                         loading="lazy"
                         allowFullScreen
-                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAMZyivuWnBZBz6gxSheYUGzoxvu0YJFlI&q=${encodeURIComponent(areaData.name)}`}
-                    ></iframe>
+                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCyTRiOFc-3Y4supPCGGteJQrfOj04trCQ&q=${encodeURIComponent(areaData.name)}`}
+                    ></iframe>}
 
                     {user && (
                         <div>

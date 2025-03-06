@@ -1,0 +1,28 @@
+.inhabitant-species {
+    margin: 2%;
+    padding: 5%;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+}
+
+.inhabitant-species h1 {
+    font-size: large;
+}
+
+.inhabitant-species h2 {
+    font-size: medium;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.inhabitant-species .description {
+    display: flex;
+    justify-content: center;
+    font-weight: 200;
+}
+
+.inhabitant-species .description .status {
+    font-weight: 500;
+}
