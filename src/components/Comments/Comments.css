@@ -1,3 +1,19 @@
+.comments {
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.stars-rating {
+    margin-top: 5%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: start;
+}
+
+.stars-rating p, .registered-comment p {
+    padding-left: 0 !important;
+}
+
 .comments-form {
     display: flex;
     gap: 20px;

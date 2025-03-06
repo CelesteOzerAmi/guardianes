@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import NavBar from '../NavBar/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AreaUpload = () => {
 
@@ -45,7 +47,7 @@ const AreaUpload = () => {
             const responseData = await response.json();
 
             if (response.ok) {
-                alert("Área registrada con éxito");
+                notify();
             } else {
                 console.error("Server Error:", responseData);
                 alert("Error en la respuesta del servidor: " + responseData.message);
@@ -54,6 +56,18 @@ const AreaUpload = () => {
             console.error("Error:", error);
         }
     };
+
+    const notify = () => toast.success('Comentario enviado con éxito', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+    });
 
     return (
         <>
@@ -123,6 +137,19 @@ const AreaUpload = () => {
                         <Button variant="primary" type="submit">
                             Registrar
                         </Button>
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable={false}
+                            pauseOnHover={false}
+                            theme="dark"
+                            transition={Bounce}
+                        />
                     </Form>
                 </section>
             </div>

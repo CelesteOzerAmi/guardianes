@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import NavBar from '../NavBar/NavBar';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ActivitiesUpload = () => {
 
@@ -74,6 +76,7 @@ const ActivitiesUpload = () => {
 
             if (data.result) {
                 console.log("data result");
+                notify();
             } else {
                 console.log('Registro no válido');
             }
@@ -84,6 +87,18 @@ const ActivitiesUpload = () => {
             console.log("finally");
         }
     };
+
+    const notify = () => toast.success('Actividad registrada con éxito', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+    });
 
 
     return (
@@ -122,6 +137,19 @@ const ActivitiesUpload = () => {
                         <Button variant="primary" type="submit">
                             Registrar
                         </Button>
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable={false}
+                            pauseOnHover={false}
+                            theme="dark"
+                            transition={Bounce}
+                        />
                     </Form>
                 </section>
             </div>

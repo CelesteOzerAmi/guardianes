@@ -4,6 +4,7 @@ import NavBar from '../NavBar/NavBar';
 import Activities from '../Activities/Activities';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const ActivitiesList = () => {
 
@@ -51,7 +52,7 @@ const ActivitiesList = () => {
         <h1>Actividades de conservación</h1>
         <h2>En esta sección se muestran las actividades de conservación de áreas naturales registradas.</h2>
 
-        <a href='/uploadactivities'>Registrar nueva actividad</a>
+        <Link to='/uploadactivities'>Registrar nueva actividad</Link>
 
         <section className='activities-grid'>
           {listActivities != null ? (

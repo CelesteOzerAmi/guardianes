@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../storage/userSlice';
-import { useSelector } from 'react-redux';
 import { ToastContainer, Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the styles
 
@@ -28,7 +26,6 @@ const Register = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const usuario = useSelector((state) => state.user);
 
   const handleRegister = async (e) => {
     e.preventDefault();

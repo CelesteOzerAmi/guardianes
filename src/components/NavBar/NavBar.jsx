@@ -3,8 +3,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
-import { useDispatch } from "react-redux";
-import { logout } from "../../storage/userSlice";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../storage/userSlice';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
@@ -13,46 +14,48 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar className="bg-body-tertiary navbar">
+      <Navbar className='bg-body-tertiary navbar'>
         <Container>
-          <Navbar.Brand href="/home">Guardianes del entorno</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to='/home'>Guardianes del entorno</Link>
+          </Navbar.Brand>
 
           {
             user ?
               <>
                 <Navbar.Text className='navbar-element'>
-                  <a href="/activities">Actividades de conservación</a>
+                  <Link to='/activities'>Actividades de conservación</Link>
                 </Navbar.Text>
                 <Navbar.Text className='navbar-element'>
-                  <a href="/areaupload">Registro de áreas</a>
+                  <Link to='/areaupload'>Registro de áreas</Link>
                 </Navbar.Text>
                 <Navbar.Text className='navbar-element'>
-                  <a href="/speciesupload">Registro de especies</a>
+                  <Link to='/speciesupload'>Registro de especies</Link>
                 </Navbar.Text>
               </>
               :
               <></>
           }
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Collapse className='justify-content-end'>
             {
               user ? <>
                 <Navbar.Text className='navbar-element'>
-                  Usuario: <a href="./">{user.name}</a>
+                  Usuario: <Link to='/user'>{user.name}</Link>
                 </Navbar.Text>
 
                 <Navbar.Text className='navbar-element'>
                   <button onClick={() => dispatch(logout())}>
-                    <a href="./">Cerrar sesión</a>
+                    <Link to='/'>Cerrar sesión</Link>
                   </button>
                 </Navbar.Text>
               </>
                 : <>
                   <Navbar.Text className='navbar-element'>
-                    <a href="./">Iniciar sesión</a>
+                    <Link to='/'>Iniciar sesión</Link>
                   </Navbar.Text>
                   |
                   <Navbar.Text className='navbar-element'>
-                    <a href="./register">Registrarme</a>
+                    <Link to='/register'>Registrarme</Link>
                   </Navbar.Text>
                 </>
             }

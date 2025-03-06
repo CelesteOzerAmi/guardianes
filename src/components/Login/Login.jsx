@@ -40,7 +40,7 @@ const Login = () => {
         if (data.isValid) {
           // Si es válido, muestra el spinner y redirige después de 2 segundos
           setTimeout(() => {
-            navigate('/user');
+            navigate('/home');
           }, 2000);
           dispatch(setUser(data.user));
         } else {

@@ -4,6 +4,8 @@ import NavBar from '../NavBar/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SpeciesUpload = () => {
     const [speciesName, setSpeciesName] = useState('');
@@ -15,36 +17,36 @@ const SpeciesUpload = () => {
     const user = useSelector((state) => state.user);
 
     useEffect(() => {
-            const fetchAreas = async () => {
-                try {
-                    const response = await fetch(
-                        `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
-                        {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'ngrok-skip-browser-warning': 'true'
-                            }
+        const fetchAreas = async () => {
+            try {
+                const response = await fetch(
+                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'ngrok-skip-browser-warning': 'true'
                         }
-                    );
-    
-                    const text = await response.text();
-                    const data = JSON.parse(text);
-                    setListAreas(data.items || []);
-                } catch (err) {
-                    console.error("Error fetching areas:", err);
-                    setListAreas([]);
-                } finally {
-                }
-            };
-    
-            fetchAreas();
-        }, []);
-    
+                    }
+                );
+
+                const text = await response.text();
+                const data = JSON.parse(text);
+                setListAreas(data.items || []);
+
+            } catch (err) {
+                console.error("Error fetching areas:", err);
+                setListAreas([]);
+            }
+        };
+
+        fetchAreas();
+    }, []);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         const payload = {
             userId: user.id,
             species: {
@@ -55,9 +57,9 @@ const SpeciesUpload = () => {
                 naturalAreaId: naturalAreaId,
             }
         };
-    
+
         console.log("Payload:", JSON.stringify(payload, null, 2));
-    
+
         try {
             const response = await fetch('https://mammal-excited-tarpon.ngrok-free.app/api/species/insert', {
                 method: 'POST',
@@ -67,11 +69,11 @@ const SpeciesUpload = () => {
                 },
                 body: JSON.stringify(payload),
             });
-    
+
             const responseData = await response.json(); // Read response
-    
+
             if (response.ok) {
-                alert("Especie registrada con éxito");
+                notify();
             } else {
                 console.error("Server Error:", responseData);
                 alert("Error en la respuesta del servidor: " + responseData.message);
@@ -80,7 +82,20 @@ const SpeciesUpload = () => {
             console.error("Error:", error);
             alert("Error de conexión o en el servidor");
         }
-    };    
+    };
+
+    const notify = () => toast.success('Especie registrada con éxito', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+    });
+
 
     return (
         <>
@@ -91,20 +106,20 @@ const SpeciesUpload = () => {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="speciesName">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                required 
-                                value={speciesName} 
-                                onChange={(e) => setSpeciesName(e.target.value)} 
+                            <Form.Control
+                                type="text"
+                                required
+                                value={speciesName}
+                                onChange={(e) => setSpeciesName(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="speciesName">
                             <Form.Label>Nombre Científico</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                required 
-                                value={scientificName} 
-                                onChange={(e) => setScientificName(e.target.value)} 
+                            <Form.Control
+                                type="text"
+                                required
+                                value={scientificName}
+                                onChange={(e) => setScientificName(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Label>Categoría</Form.Label>
@@ -144,6 +159,19 @@ const SpeciesUpload = () => {
                         <Button variant="primary" type="submit">
                             Registrar
                         </Button>
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable={false}
+                            pauseOnHover={false}
+                            theme="dark"
+                            transition={Bounce}
+                        />
                     </Form>
                 </section>
             </div>
