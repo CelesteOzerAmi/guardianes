@@ -57,7 +57,7 @@ const AreaUpload = () => {
         }
     };
 
-    const notify = () => toast.success('Comentario enviado con éxito', {
+    const notify = () => toast.success('Área registrada con éxito', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: true,

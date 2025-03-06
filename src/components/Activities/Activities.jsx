@@ -9,7 +9,7 @@ const Activities = (props) => {
     const [areaInfo, setAreaInfo] = useState(null);
     let areaName = "";
 
-    const getAreaInfo = (activityId) => {
+    /*const getAreaInfo = (activityId) => {
         if(listAreas != null){  
             listAreas.map(area => {
                 if(area.id == activityId){
@@ -18,7 +18,7 @@ const Activities = (props) => {
             });
         } 
         return areaInfo;
-    };
+    };*/
 
     useEffect(() => {
         const fetchAreas = async () => {
@@ -36,7 +36,11 @@ const Activities = (props) => {
 
                 const textAreas = await responseAreas.text();
                 const dataAreas = JSON.parse(textAreas);
-                setListAreas(dataAreas.items || []);
+                setListAreas(dataAreas.items);
+                const matchingArea = dataAreas.items.find(area => area.id === activity.naturalAreaId);
+                if (matchingArea) {
+                    setAreaInfo(matchingArea.name);
+                }
             } catch (err) {
                 console.error("Error fetching areas:", err);
                 setListAreas([]);
@@ -44,20 +48,20 @@ const Activities = (props) => {
         };
 
         fetchAreas();
-        getAreaInfo(activity.naturalAreaId);
+        //getAreaInfo(activity.naturalAreaId);
 
     }, []);
-
-    if(areaInfo){
-        areaName = areaInfo.name;
-    }
 
     return (
         <>
             <div className='activity'>
-                <h2>
-                    {areaName}
-                </h2>
+                    {
+                        areaInfo !== null &&
+                        <h2>
+                            Área: {areaInfo}
+                        </h2>
+                    }
+                
                 <p>
                     {activity.date}
                 </p>

@@ -20,7 +20,7 @@ const ActivitiesUpload = () => {
         const fetchAreas = async () => {
             try {
                 const response = await fetch(
-                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
+                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=1000`,
                     {
                         method: 'GET',
                         headers: {
@@ -115,6 +115,8 @@ const ActivitiesUpload = () => {
                             <Form.Control type="date" value={dateInfo} required
                                 onChange={(e) => setDateInfo(e.target.value)} />
                         </Form.Group>
+                        <br />
+                        <Form.Label>Área</Form.Label>
                         <Form.Select aria-label="Default select example" onChange={(e) => setAreaId(e.target.value)} value={areaId}>
 
                             {
@@ -129,11 +131,13 @@ const ActivitiesUpload = () => {
                                     <option>No hay áreas disponibles</option>
                             }
                         </Form.Select>
+                        <br />
                         <Form.Group className="mb-3" controlId="areaInfo">
                             <Form.Label>Descripción</Form.Label>
                             <Form.Control as="textarea" rows={3} value={descriptionInfo} required
                                 onChange={(e) => setDescriptionInfo(e.target.value)} />
                         </Form.Group>
+                        <br />
                         <Button variant="primary" type="submit">
                             Registrar
                         </Button>

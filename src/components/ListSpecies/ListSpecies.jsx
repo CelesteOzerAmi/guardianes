@@ -9,7 +9,7 @@ const ListSpecies = () => {
     const [listSpecies, setListSpecies] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize] = useState(10); // Cantidad de especies por página
+    const [pageSize] = useState(9); // Cantidad de especies por página
 
     const dispatch = useDispatch();
     const species = useSelector((state) => state.species);

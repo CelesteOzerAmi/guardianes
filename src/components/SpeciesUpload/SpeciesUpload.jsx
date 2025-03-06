@@ -20,7 +20,7 @@ const SpeciesUpload = () => {
         const fetchAreas = async () => {
             try {
                 const response = await fetch(
-                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=10`,
+                    `https://mammal-excited-tarpon.ngrok-free.app/api/natural-area/list?page=1&pageSize=1000`,
                     {
                         method: 'GET',
                         headers: {

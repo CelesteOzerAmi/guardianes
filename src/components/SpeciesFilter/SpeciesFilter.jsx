@@ -27,6 +27,12 @@ const SpeciesFilter = () => {
         dispatch(setSpecies(speciesArray));
     };
 
+    const regionFilter = () => {
+        const speciesArray = [...species];
+        speciesArray.sort((a, b) => a.naturalAreaId - b.naturalAreaId);
+        dispatch(setSpecies(speciesArray));
+    };
+
     const conservationStatusFilter = () => {
         const speciesArray = [...species];
         speciesArray.sort((a, b) => a.conservationStatus.localeCompare(b.conservationStatus));
@@ -43,7 +49,7 @@ const SpeciesFilter = () => {
                 <Dropdown.Item onClick={commonNameFilter}>Nombre común</Dropdown.Item>
                 <Dropdown.Item onClick={scientificNameFilter}>Nombre científico</Dropdown.Item>
                 <Dropdown.Item onClick={categoryFilter}>Categoría</Dropdown.Item>
-                <Dropdown.Item>Región</Dropdown.Item>
+                <Dropdown.Item onClick={regionFilter}>Región</Dropdown.Item>
                 <Dropdown.Item onClick={conservationStatusFilter}>Estado de conservación</Dropdown.Item>
 
             </Dropdown.Menu>

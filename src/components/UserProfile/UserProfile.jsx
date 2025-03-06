@@ -112,7 +112,7 @@ const UserProfile = () => {
 
     var speciesSliderSettings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -120,7 +120,7 @@ const UserProfile = () => {
 
     var activitiesSliderSettings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -154,14 +154,15 @@ const UserProfile = () => {
                         listSpecies === null || listSpecies.length === 0 ?
                             <p className='profile-text'>No hay especies cargadas.</p>
                             :
-                            <Slider {...speciesSliderSettings}>
-
-                                {
-                                    listSpecies.map((speciesType) => (
-                                        <Species typeSpecies={speciesType} key={speciesType.id} />
-                                    ))
-                                }
-                            </Slider>
+                            <>
+                                <Slider {...speciesSliderSettings}>
+                                    {
+                                        listSpecies.map((speciesType) => (
+                                            <Species typeSpecies={speciesType} key={speciesType.id} />
+                                        ))
+                                    }
+                                </Slider>
+                            </>
                     }
                 </section>
 
