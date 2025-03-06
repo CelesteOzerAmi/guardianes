@@ -55,14 +55,6 @@ const AreaDetail = (props) => {
         fetchSpecies();
     }, []);
 
-
-    //    useEffect for executing getSpecies at speciesList changes    // 
-   /* useEffect(() => {
-        
-    }, [speciesList])*/
-
-
-
     function AreaDetailModal(props) {
         return (
             <Modal
@@ -101,7 +93,7 @@ const AreaDetail = (props) => {
                         style={{ border: 0, marginTop: '10px' }}
                         loading="lazy"
                         allowFullScreen
-                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAMZyivuWnBZBz6gxSheYUGzoxvu0YJFlI&q=${encodeURIComponent(areaData.name)}`}
+                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCyTRiOFc-3Y4supPCGGteJQrfOj04trCQ&q=${encodeURIComponent(areaData.name)}`}
                     ></iframe>
 
                     {user && (
