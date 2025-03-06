@@ -109,14 +109,14 @@ const AreaDetail = (props) => {
 
 
                     {/* Google Maps Embed */}
-                    {<iframe
+                    <iframe
                         width="94%"
                         height="300"
                         style={{ border: 0, margin: '3%' }}
                         loading="lazy"
                         allowFullScreen
                         src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCyTRiOFc-3Y4supPCGGteJQrfOj04trCQ&q=${encodeURIComponent(areaData.name)}`}
-                    ></iframe>}
+                    ></iframe>
 
                     {user && (
                         <div>
