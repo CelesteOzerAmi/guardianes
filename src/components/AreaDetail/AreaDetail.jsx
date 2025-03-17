@@ -115,7 +115,7 @@ const AreaDetail = (props) => {
                         style={{ border: 0, margin: '3%' }}
                         loading="lazy"
                         allowFullScreen
-                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCyTRiOFc-3Y4supPCGGteJQrfOj04trCQ&q=${encodeURIComponent(areaData.name)}`}
+                        src={`https://www.google.com/maps/embed/v1/place?key=API-KEY-HERE&q=${encodeURIComponent(areaData.name)}`}
                     ></iframe>
 
                     {user && (
