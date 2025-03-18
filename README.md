@@ -1,3 +1,2 @@
-npm install --save react-toastify
-yarn add react-toastify
-npm install @mui/material @emotion/react @emotion/styled
+Single page application made with ReactJS. This site shows protected areas and species around the world, along with conservation activities uploaded by users. The data shown is fetched from an API, to which registered users have access and can make changes to. Users can rate and comment any area or species displayed, and add, delete or edit them as they wish. They can also see their own profile, that collects all the information they have added to the API. Viewers that are not logged in can also see the areas and species uploaded in the API, but they wont be able to make any changes. 
+Developed by Lucas Scognamiglio and Celeste Ozer Ami.
